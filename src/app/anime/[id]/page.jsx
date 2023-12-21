@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse, calculateBackoffTime } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import CollectionButton from "@/components/AnimeList/CollectionButton";

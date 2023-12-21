@@ -1,3 +1,9 @@
+export const calculateBackoffTime = (attempts) => {
+  // Contoh implementasi sederhana:
+  const base = 2; // Pangkat untuk perhitungan backoff
+  const factor = 1000; // Untuk konversi ke milidetik
+  return Math.pow(base, attempts) * factor;
+};
 export const getAnimeResponse = async (resource, query) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${resource}?${query}`);
