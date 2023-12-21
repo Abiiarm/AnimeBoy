@@ -3,8 +3,11 @@ export const getAnimeResponse = async (resource, query) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${resource}?${query}`);
 
     // Cek status response
-    if (!response.ok) {
-      throw new Error(`API request gagal: ${response.status}`);
+    if (!response.ok && response.status === 429) {
+      // Implementasikan backoff mechanism:
+      const waitTime = calculateBackoffTime(attempts); // Fungsi untuk menghitung waktu tunggu
+      await new Promise((resolve) => setTimeout(resolve, waitTime));
+      return getAnimeResponse(resource, query, attempts + 1); // Coba request kembali
     }
 
     const anime = await response.json();
