@@ -8,9 +8,12 @@ import prisma from "@/libs/prisma";
 const Page = async ({ params: { id } }) => {
   try {
     const animeResponse = await getAnimeResponse(`anime/${id}`);
-    const anime = animeResponse || { data: {} };
+    console.log("animeResponse:", animeResponse); // Periksa isi
 
-    if (!anime || !anime.data) {
+    const anime = animeResponse?.data || {}; // Pastikan anime.data selalu ada
+    console.log("anime:", anime); // Periksa isi
+
+    if (!animeResponse?.data || !animeResponse.data.flatMap) {
       throw new Error("Anime data is undefined or missing.");
     }
 
