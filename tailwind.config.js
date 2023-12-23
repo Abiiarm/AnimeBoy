@@ -15,7 +15,7 @@ module.exports = {
         secondary: "#393e46",
         dark: "#222831",
         dongker: "#2D4263",
-        orange: "#82A0D8",
+        orange: "#6886C5",
       },
     },
   },
