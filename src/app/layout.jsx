@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "@/app/globals.css";
-import { Gabarito } from "next/font/google";
-
-const gabarito = Gabarito({ subsets: ["latin"] });
+import "@fontsource/fira-code"; // Menggunakan paket fira-code dari fontsource
 
 export const metadata = {
   title: "BoyAnime",
@@ -12,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${gabarito.className} bg-color-dark`} suppressHydrationWarning={true}>
+      <body className="bg-color-dark" suppressHydrationWarning={true}>
         <Navbar />
         {children}
       </body>

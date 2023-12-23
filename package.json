@@ -1,5 +1,5 @@
 {
-  "name": "cuyanimelist",
+  "name": "animeboy",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@fontsource/fira-code": "^5.0.16",
     "@phosphor-icons/react": "^2.0.13",
     "@prisma/client": "^5.6.0",
     "axios": "^1.6.2",
