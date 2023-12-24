@@ -1,16 +1,32 @@
-import NextAuth from "next-auth"
-import githubAuth from "next-auth/providers/github"
+// auth.js
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
 
-export const authOption = {
-    providers: [
-        githubAuth({
-            clientId: process.env.GITHUB_CLIENT,
-            clientSecret: process.env.GITHUB_SECRET
-        })
-    ],
-    secret: process.env.NEXTAUTH_SECRET
-}
-
-const handler = NextAuth(authOption)
-
-export { handler as GET, handler as POST }
+export default NextAuth({
+  providers: [
+    Providers.GitHub({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    }),
+    // Add other providers as needed
+  ],
+  callbacks: {
+    async jwt(token, user) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session(session, token) {
+      session.user.id = token.id;
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/auth/signin",
+    signOut: "/auth/signout",
+    error: "/auth/error",
+    verifyRequest: "/auth/verify-request",
+    newUser: null,
+  },
+});
