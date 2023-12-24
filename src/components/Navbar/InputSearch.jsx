@@ -21,8 +21,13 @@ const InputSearch = () => {
 
   return (
     <div className="relative">
-      <input placeholder="Search Anime" className="w-full rounded-lg p-2" ref={searchRef} onKeyDown={handleSearch} />
-      <button className="absolute end-2 top-2" onClick={handleSearch}>
+      <input
+        placeholder="Search Anime"
+        className="w-full rounded-lg p-2 pl-10" // Added padding-left (pl-10) to push text away from the magnifying glass
+        ref={searchRef}
+        onKeyDown={handleSearch}
+      />
+      <button className="absolute start-2 top-2" onClick={handleSearch}>
         <MagnifyingGlass size={24} />
       </button>
     </div>
